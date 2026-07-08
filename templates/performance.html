@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Model Performance | Rising Waters</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+        <header class="navbar">
+            <div class="container nav-container">
+                <a href="{{ url_for('home') }}" class="logo">
+                    <i class="fa-solid fa-water"></i>
+                    Rising Waters
+                </a>
+
+                <nav>
+                    <ul class="nav-list">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('predict_page') }}">Prediction</a></li>
+                        <li><a class="active">Performance</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="performance-hero">
+            <div class="container">
+                <div class="performance-header">
+                    <div class="performance-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <h1>Model Performance Dashboard</h1>
+
+                    <p>
+                        Explore evaluation metrics and visualizations used to validate
+                        our XGBoost flood prediction model.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="performance-section">
+            <div class="container">
+                <!-- Overview -->
+                <div class="glass-card overview-card">
+                    <h2>
+                        <i class="fa-solid fa-circle-info"></i>
+                        Model Overview
+                    </h2>
+
+                    <p>
+                        The flood prediction system was trained using multiple machine learning
+                        algorithms on historical rainfall and meteorological datasets.
+
+                        <strong>XGBoost</strong> achieved the highest prediction accuracy of
+                        <strong>96.55%</strong> and was selected as the final deployment model.
+                    </p>
+
+                    <p>
+                        The model evaluates ten environmental parameters including temperature,
+                        humidity, cloud cover, annual rainfall and seasonal rainfall before
+                        predicting flood susceptibility.
+                    </p>
+                </div>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <!-- Algorithm -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-table"></i>
+                            Algorithm Comparison
+                        </h2>
+
+                        <table class="performance-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Accuracy</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Decision Tree</td>
+                                    <td>69.79%</td>
+                                    <td><span class="badge danger">Baseline</span></td>
+                                </tr>
+                                <tr>
+                                    <td>KNN</td>
+                                    <td>84.65%</td>
+                                    <td><span class="badge warning">Moderate</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Random Forest</td>
+                                    <td>89.85%</td>
+                                    <td><span class="badge info">High</span></td>
+                                </tr>
+                                <tr class="best-row">
+                                    <td><strong>XGBoost</strong></td>
+                                    <td><strong>96.55%</strong></td>
+                                    <td><span class="badge success">Best</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Accuracy -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-chart-column"></i>
+                            Accuracy Comparison
+                        </h2>
+
+                        <img src="{{ url_for('static', filename='images/accuracy_chart.png') }}" alt="Accuracy Chart">
+                    </div>
+
+                    <!-- Confusion Matrix -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-table-cells"></i>
+                            Confusion Matrix
+                        </h2>
+
+                        <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" alt="Confusion Matrix">
+                    </div>
+
+                    <!-- Heatmap -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-fire"></i>
+                            Correlation Heatmap
+                        </h2>
+
+                        <img src="{{ url_for('static', filename='images/correlation_heatmap.png') }}" alt="Correlation Heatmap">
+                    </div>
+
+                    <!-- ROC Curve -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-chart-area"></i>
+                            ROC Curve
+                        </h2>
+
+                        <img src="{{ url_for('static', filename='images/roc_curve.png') }}"
+                            alt="ROC Curve">
+                    </div>
+
+                    <!-- Feature Importance -->
+                    <div class="glass-card dashboard-card">
+                        <h2>
+                            <i class="fa-solid fa-ranking-star"></i>
+                            Feature Importance
+                        </h2>
+
+                        <img src="{{ url_for('static', filename='images/feature_importance.png') }}"
+                            alt="Feature Importance">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+
+</html>

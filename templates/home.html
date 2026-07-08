@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rising Waters – Flood Prediction System: an AI-powered dashboard for predicting flood occurrence using weather and rainfall data." />
+  <title>Rising Waters – Flood Prediction System</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Project Styles (Flask: use url_for('static', filename='css/style.css')) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- ================= HEADER / NAVIGATION ================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="home.html" class="logo">
+        <i class="fa-solid fa-water"></i>
+        <span>Rising Waters</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section id="home" class="hero-section">
+
+        <!-- Animated wave background -->
+        <div class="wave-background" aria-hidden="true">
+            <div class="wave wave-one"></div>
+            <div class="wave wave-two"></div>
+            <div class="wave wave-three"></div>
+        </div>
+
+        <div class="container hero-container">
+
+            <!-- Left Content -->
+            <div class="hero-content">
+
+                <h1 class="hero-title">Rising Waters</h1>
+
+                <p class="hero-subtitle">
+                    AI-Powered Flood Prediction System
+                </p>
+
+                <p class="hero-description">
+                    Harnessing machine learning and real-time weather insights to
+                    forecast flood risk, protect communities, and support smarter
+                    disaster preparedness.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="{{ url_for('predict_page') }}" class="btn btn-primary">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Start Prediction
+                    </a>
+
+                    <a href="#about" class="btn btn-secondary">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Learn More
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Right Dashboard -->
+            <div class="hero-visual">
+
+                <div class="hero-figure">
+
+                    <div class="dashboard-header">
+
+                        <div class="dashboard-icon">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                        </div>
+
+                        <div>
+                            <h2>AI Flood Intelligence</h2>
+                            <span>Machine Learning Prediction Engine</span>
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-divider"></div>
+
+                    <div class="dashboard-metrics">
+
+                        <div class="metric-card">
+                            <small>Model</small>
+                            <h4>XGBoost</h4>
+                        </div>
+
+                        <div class="metric-card">
+                            <small>Accuracy</small>
+                            <h4>96.55%</h4>
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-metrics">
+
+                        <div class="metric-card">
+                            <small>Features</small>
+                            <h4>10</h4>
+                        </div>
+
+                        <div class="metric-card">
+                            <small>Status</small>
+                            <h4 class="status-ready">
+                              <span class="status-dot"></span>
+                              READY
+                          </h4>
+                        </div>
+
+                    </div>
+
+                    <div class="prediction-flow">
+
+                        <div class="flow-item">
+                            <i class="fa-solid fa-cloud-rain"></i>
+                            Weather
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                        <div class="flow-item">
+                            <i class="fa-solid fa-brain"></i>
+                            AI Model
+                        </div>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                        <div class="flow-item">
+                            <i class="fa-solid fa-water"></i>
+                            Prediction
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ================= STATISTICS SECTION ================= -->
+    <section class="stats-section">
+      <div class="container stats-grid">
+        <article class="stat-card glass-card">
+          <i class="fa-solid fa-bullseye"></i>
+          <h3 data-count="96">0</h3>
+          <p>Model Accuracy (%)</p>
+        </article>
+        <article class="stat-card glass-card">
+          <i class="fa-solid fa-database"></i>
+          <h3 data-count="12000">0</h3>
+          <p>Training Samples</p>
+        </article>
+        <article class="stat-card glass-card">
+          <i class="fa-solid fa-cloud-showers-heavy"></i>
+          <h3 data-count="10">0</h3>
+          <p>Weather Features</p>
+        </article>
+        <article class="stat-card glass-card">
+          <i class="fa-solid fa-bolt"></i>
+          <h3 data-count="200">0</h3>
+          <p>Predictions / sec</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT PROJECT SECTION ================= -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">About Project</span>
+          <h2 class="section-title">Predicting Floods Before They Happen</h2>
+        </header>
+        <div class="about-grid">
+          <article class="about-card glass-card">
+            <i class="fa-solid fa-bullseye about-icon"></i>
+            <h3>Objective</h3>
+            <p>
+              Build an intelligent system that predicts flood occurrence based on weather and
+              rainfall parameters, enabling proactive decision-making for communities at risk.
+            </p>
+          </article>
+          <article class="about-card glass-card">
+            <i class="fa-solid fa-database about-icon"></i>
+            <h3>Dataset</h3>
+            <p>
+              Trained on historical weather and rainfall records including temperature, humidity,
+              cloud cover, annual rainfall, and monthly rainfall distributions.
+            </p>
+          </article>
+          <article class="about-card glass-card">
+            <i class="fa-solid fa-brain about-icon"></i>
+            <h3>Model</h3>
+            <p>
+              A machine learning classifier evaluates multiple environmental signals to output a
+              clear flood risk probability with explainable confidence.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MACHINE LEARNING WORKFLOW SECTION ================= -->
+    <section id="workflow" class="workflow-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">Machine Learning Workflow</span>
+          <h2 class="section-title">From Data to Decision</h2>
+        </header>
+        <div class="workflow-grid">
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">01</div>
+            <i class="fa-solid fa-file-csv"></i>
+            <h3>Data Collection</h3>
+            <p>Gather historical rainfall, temperature, humidity, and cloud cover records.</p>
+          </article>
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">02</div>
+            <i class="fa-solid fa-broom"></i>
+            <h3>Preprocessing</h3>
+            <p>Clean missing values, normalize features, and engineer predictive inputs.</p>
+          </article>
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">03</div>
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <h3>Exploratory Analysis</h3>
+            <p>Visualize trends, correlations, and seasonal flood patterns.</p>
+          </article>
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">04</div>
+            <i class="fa-solid fa-robot"></i>
+            <h3>Model Training</h3>
+            <p>Train and compare classification algorithms to find the best performer.</p>
+          </article>
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">05</div>
+            <i class="fa-solid fa-chart-pie"></i>
+            <h3>Evaluation</h3>
+            <p>Validate accuracy, precision, recall, and F1-score on unseen data.</p>
+          </article>
+          <article class="workflow-card glass-card">
+            <div class="workflow-step">06</div>
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <h3>Deployment</h3>
+            <p>Deploy the trained model behind a user-friendly prediction dashboard.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECT FEATURES SECTION ================= -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">Project Features</span>
+          <h2 class="section-title">Built for Accuracy &amp; Usability</h2>
+        </header>
+        <div class="features-grid">
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-wand-magic-sparkles feature-icon"></i>
+            <h3>Instant Prediction</h3>
+            <p>Enter weather parameters and receive a real-time flood risk assessment.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-chart-column feature-icon"></i>
+            <h3>Interactive Visualizations</h3>
+            <p>Explore charts and reports that make model insights easy to understand.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-mobile-screen feature-icon"></i>
+            <h3>Fully Responsive</h3>
+            <p>Access the dashboard seamlessly on desktop, tablet, and mobile devices.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-shield-halved feature-icon"></i>
+            <h3>Reliable &amp; Secure</h3>
+            <p>Built with clean architecture, input validation, and secure deployment practices.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-bolt feature-icon"></i>
+            <h3>Fast Performance</h3>
+            <p>Optimized model inference and lightweight frontend for quick responses.</p>
+          </article>
+          <article class="feature-card glass-card">
+            <i class="fa-solid fa-file-pdf feature-icon"></i>
+            <h3>Detailed Reports</h3>
+            <p>Generate and download comprehensive prediction reports for stakeholders.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TECHNOLOGIES USED SECTION ================= -->
+    <section id="technologies" class="technologies-section">
+      <div class="container">
+        <header class="section-header">
+          <span class="section-tag">Technologies Used</span>
+          <h2 class="section-title">Modern Tools Powering the System</h2>
+        </header>
+        <div class="technologies-grid">
+          <article class="technology-item glass-card">
+            <i class="fa-brands fa-python"></i>
+            <h3>Python</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-solid fa-flask"></i>
+            <h3>Flask</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Scikit-learn</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-solid fa-table"></i>
+            <h3>Pandas</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-solid fa-calculator"></i>
+            <h3>NumPy</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-brands fa-html5"></i>
+            <h3>HTML5</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-brands fa-css3-alt"></i>
+            <h3>CSS3</h3>
+          </article>
+          <article class="technology-item glass-card">
+            <i class="fa-brands fa-js"></i>
+            <h3>JavaScript</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="home.html" class="logo">
+          <i class="fa-solid fa-water"></i>
+          <span>Rising Waters</span>
+        </a>
+        <p>Protecting communities through intelligent flood forecasting.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul class="footer-nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#workflow">Workflow</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#technologies">Technologies</a></li>
+        </ul>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Rising Waters. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Project Scripts (Flask: use url_for('static', filename='js/script.js')) -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
